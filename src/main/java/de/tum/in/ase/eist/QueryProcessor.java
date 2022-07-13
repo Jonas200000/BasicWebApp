@@ -30,7 +30,8 @@ public class QueryProcessor {
             int largest = Integer.MIN_VALUE;
             for (String s : params) {
                 try {
-                    if (Integer.parseInt(s) > largest) {
+                    int current = Integer.parseInt(s);
+                    if (current > largest) {
                         largest = Integer.parseInt(s);
                     }
                 } catch (NumberFormatException e) {
@@ -41,5 +42,14 @@ public class QueryProcessor {
         } else { // TODO extend the programm here
             return "";
         }
+    }
+
+    public static void main(String[] args) {
+        QueryProcessor queryProcessor = new QueryProcessor();
+
+        String plus = "what is 2 plus 5";
+        System.out.println(queryProcessor.process(plus));
+        String largest = "what is the largest of 2 5 99 3 2";
+        System.out.println(queryProcessor.process(largest));
     }
 }
